@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-practice-001!');
   });
 
-  it(`should have as name 'Bond, James Bond'`, () => {
+  it(`should have as getName method 'Bond, James Bond'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.getName()).toEqual('Bond, James Bond');
