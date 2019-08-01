@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Heroes</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <div>
+        {{ heroes[0].name }}
+        <button class="btn btn-info"
+          (click)="selectHero(heroes[0])">select</button>
+      </div>
+      <div>
+        {{ heroes[1].name }}
+        <button class="btn btn-info"
+          (click)="selectHero(heroes[1])">select</button>
+      </div>
+      <div>
+        {{ heroes[2].name }}
+        <button class="btn btn-info"
+          (click)="selectHero(heroes[2])">select</button>
+      </div>
+    </div>
+  </div>
+
+  <app-hero-detail [hero]="selectedHero"
+    (onChange)="heroChanged($event)"></app-hero-detail>
+</div>
