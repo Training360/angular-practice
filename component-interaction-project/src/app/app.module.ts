@@ -7,6 +7,8 @@ import { IndexComponent } from './page/index/index.component';
 import { EmployeeComponent } from './page/employee/employee.component';
 import { QuizComponent } from './page/quiz/quiz.component';
 import { NavComponent } from './page/nav/nav.component';
+import { BillComponent } from './page/bill/bill.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { NavComponent } from './page/nav/nav.component';
     IndexComponent,
     EmployeeComponent,
     QuizComponent,
-    NavComponent
+    NavComponent,
+    BillComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
