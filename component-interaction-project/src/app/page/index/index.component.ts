@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
+  modalCounter: number = 0;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showModal(): void {
+    this.modalCounter++;
   }
 
 }
