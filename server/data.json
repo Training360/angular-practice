@@ -1,0 +1,22 @@
+{
+    "film": [
+        {
+            "id": 1,
+            "title": "Edge of Tomorrow",
+            "release": 2011,
+            "actor": "Tom Cruise"
+        },
+        {
+            "id": 2,
+            "title": "Sound of Music",
+            "release": 1965,
+            "actor": "Julie Andrews"
+        },
+        {
+            "id": 3,
+            "title": "Ben Hur",
+            "release": 1956,
+            "actor": "Charlton Heston"
+        }
+    ]
+}
