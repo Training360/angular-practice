@@ -13,12 +13,25 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+
+            "optimization": false,
+            "outputHashing": "none",
+            "sourceMap": false,
+            "extractCss": true,
+            "namedChunks": false,
+            "showCircularDependencies": false,
+            "aot": true,
+            "extractLicenses": false,
+            "statsJson": false,
+            "progress": true,
+            "vendorChunk": true,
+            "buildOptimizer": false,
+
             "outputPath": "dist/pipe-directive-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
             "assets": [
               "src/favicon.ico",
               "src/assets"
