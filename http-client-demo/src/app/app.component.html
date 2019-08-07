@@ -12,10 +12,10 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Release</th>
-            <th>Actor</th>
+            <th (click)="setSorterKey('id')">#</th>
+            <th (click)="setSorterKey('title')">Title</th>
+            <th (click)="setSorterKey('release')">Release</th>
+            <th (click)="setSorterKey('actor')">Actor</th>
             <th>commands</th>
           </tr>
         </thead>
@@ -36,7 +36,7 @@
               <button (click)="onCreate()" class="btn btn-success">add</button>
             </td>
           </tr>
-          <tr *ngFor="let film of filmList | filter:filterPhrase">
+          <tr *ngFor="let film of filmList | filter:filterPhrase:changeCounter | sorter:orderKey:changeCounter">
             <td>{{ film.id }}</td>
             <td>
               <input [(ngModel)]="film.title" type="text" class="form-control">

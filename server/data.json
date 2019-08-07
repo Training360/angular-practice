@@ -23,6 +23,18 @@
       "title": "Sound of Music",
       "release": "1961",
       "actor": "Julie Andrews"
+    },
+    {
+      "id": 6,
+      "title": "Desperado",
+      "release": "2001",
+      "actor": "Balogh Antal"
+    },
+    {
+      "id": 7,
+      "title": "Indul a Bakterház",
+      "release": 1990,
+      "actor": "OI"
     }
   ]
 }

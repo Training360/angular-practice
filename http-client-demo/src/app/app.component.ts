@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   filmList: Film[] = [];
   newFilm: Film = new Film();
   filterPhrase: string = '';
+  orderKey: string = '';
+  changeCounter: number = 0;
 
   constructor(
     private filmService: FilmService
@@ -24,32 +26,41 @@ export class AppComponent implements OnInit {
       response => {
         let index = this.filmList.indexOf(film);
         this.filmList.splice(index, 1);
+        this.changeCounter++;
       },
       err => console.error(err)
-    )
-  }
+      )
+    }
 
-  onUpdate(film:Film) {
-    this.filmService.update(film).subscribe(
-      response => {},
-      err => console.log(err)
-    )
-  }
+    onUpdate(film:Film) {
+      this.filmService.update(film).subscribe(
+        response => {
+          this.changeCounter++;
 
-  onCreate() {
-    this.filmService.create(this.newFilm).subscribe(
-      film => {
-        this.filmList.push(film);
-        this.newFilm = new Film();
-      },
-      err => console.error(err)
-    );
+        },
+        err => console.log(err)
+        )
+      }
+
+      onCreate() {
+        this.filmService.create(this.newFilm).subscribe(
+          film => {
+            this.filmList.push(film);
+            this.newFilm = new Film();
+            this.changeCounter++;
+          },
+          err => console.error(err)
+          );
   }
 
   ngOnInit() {
     this.filmService.getAll().subscribe(
       films => this.filmList = films
     )
+  }
+
+  setSorterKey(key: string): void {
+    this.orderKey = key;
   }
 
 
