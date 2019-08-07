@@ -17,4 +17,27 @@ export class FilmService {
   getAll(): Observable<Film[]> {
     return this.http.get<Film[]>(this.jsonUrl);
   }
+
+  getOne(id: number): Observable<Film> {
+    return this.http.get<Film>(`${this.jsonUrl}/${id}`);
+  }
+
+  create(film: Film): Observable<Film> {
+    return this.http.post<Film>(
+      this.jsonUrl,
+      film
+    );
+  }
+
+  update(film: Film): Observable<Film> {
+    return this.http.put<Film>(
+      `${this.jsonUrl}/${film.id}`,
+      film
+    );
+  }
+
+  remove(id: number): Observable<Film> {
+    return this.http.delete<Film>(`${this.jsonUrl}/${id}`);
+  }
+
 }

@@ -1,6 +1,6 @@
 export class Film {
-  id: number;
-  title: string;
-  release: number;
-  actor: string;
+  id: number = 0;
+  title: string = '';
+  release: number = 1990;
+  actor: string = '';
 }
