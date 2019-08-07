@@ -11,6 +11,18 @@
       "title": "Ben Hur",
       "release": 1956,
       "actor": "Charlton Heston"
+    },
+    {
+      "id": 4,
+      "title": "Titanic",
+      "release": "1998",
+      "actor": "Leo Cappuchino"
+    },
+    {
+      "id": 5,
+      "title": "Sound of Music",
+      "release": "1961",
+      "actor": "Julie Andrews"
     }
   ]
 }

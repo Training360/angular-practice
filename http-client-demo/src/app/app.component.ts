@@ -10,6 +10,8 @@ import { Film } from './model/film';
 export class AppComponent implements OnInit {
   title = 'http-client-demo';
   filmList: Film[] = [];
+  newFilm: Film = new Film();
+  filterPhrase: string = '';
 
   constructor(
     private filmService: FilmService
@@ -32,6 +34,16 @@ export class AppComponent implements OnInit {
       response => {},
       err => console.log(err)
     )
+  }
+
+  onCreate() {
+    this.filmService.create(this.newFilm).subscribe(
+      film => {
+        this.filmList.push(film);
+        this.newFilm = new Film();
+      },
+      err => console.error(err)
+    );
   }
 
   ngOnInit() {
