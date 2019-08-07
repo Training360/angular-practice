@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   newFilm: Film = new Film();
   filterPhrase: string = '';
   orderKey: string = '';
+  orderDirection: number = 1;
   changeCounter: number = 0;
 
   constructor(
@@ -36,7 +37,6 @@ export class AppComponent implements OnInit {
       this.filmService.update(film).subscribe(
         response => {
           this.changeCounter++;
-
         },
         err => console.log(err)
         )
@@ -60,6 +60,12 @@ export class AppComponent implements OnInit {
   }
 
   setSorterKey(key: string): void {
+    if (key === this.orderKey) {
+      this.orderDirection = this.orderDirection === -1 ? 1 : -1;
+    } else {
+      this.orderDirection = 1;
+    }
+
     this.orderKey = key;
   }
 

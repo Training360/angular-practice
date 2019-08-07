@@ -36,7 +36,7 @@
               <button (click)="onCreate()" class="btn btn-success">add</button>
             </td>
           </tr>
-          <tr *ngFor="let film of filmList | filter:filterPhrase:changeCounter | sorter:orderKey:changeCounter">
+          <tr *ngFor="let film of filmList | filter:filterPhrase:changeCounter | sorter:orderKey:orderDirection:changeCounter">
             <td>{{ film.id }}</td>
             <td>
               <input [(ngModel)]="film.title" type="text" class="form-control">
