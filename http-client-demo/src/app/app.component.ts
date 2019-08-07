@@ -17,9 +17,28 @@ export class AppComponent implements OnInit {
 
   }
 
+  onDelete(film: Film) {
+    this.filmService.remove(film.id).subscribe(
+      response => {
+        let index = this.filmList.indexOf(film);
+        this.filmList.splice(index, 1);
+      },
+      err => console.error(err)
+    )
+  }
+
+  onUpdate(film:Film) {
+    this.filmService.update(film).subscribe(
+      response => {},
+      err => console.log(err)
+    )
+  }
+
   ngOnInit() {
     this.filmService.getAll().subscribe(
       films => this.filmList = films
     )
   }
+
+
 }

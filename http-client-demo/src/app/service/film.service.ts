@@ -36,8 +36,8 @@ export class FilmService {
     );
   }
 
-  remove(id: number): Observable<Film> {
-    return this.http.delete<Film>(`${this.jsonUrl}/${id}`);
+  remove(id: number): Observable<any> {
+    return this.http.delete(`${this.jsonUrl}/${id}`);
   }
 
 }
