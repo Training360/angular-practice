@@ -35,6 +35,12 @@
       "title": "Indul a Bakterház",
       "release": 1990,
       "actor": "OI"
+    },
+    {
+      "id": 8,
+      "title": "Romulus the Hero",
+      "release": "5",
+      "actor": "Julius Caesar"
     }
   ]
 }

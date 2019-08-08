@@ -33,7 +33,8 @@ export class AppComponent implements OnInit {
       )
     }
 
-    onUpdate(film:Film) {
+    onUpdate(film: any) {
+      parseInt(film.release);
       this.filmService.update(film).subscribe(
         response => {
           this.changeCounter++;
