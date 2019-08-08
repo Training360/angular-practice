@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { UserEditComponent } from './page/user-edit/user-edit.component';
 import { IndexComponent } from './page/index/index.component';
 import { UserListComponent } from './page/user-list/user-list.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserEditComponent,
     IndexComponent,
-    UserListComponent
+    UserListComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
