@@ -23,24 +23,21 @@ class PostHandler {
 
 class GetHandler {
     constructor(req, res) {
-        if (req.url === '/') {
-            fs.readFile('./view/index.html', 'utf8', (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return res.end('404');
-                }
-                res.end(data);
-            });
-        } else {
-            let filePath = `./view${req.url}.html`;
-            fs.readFile(filePath, 'utf8', (err, data) => {
-                if (err) {
-                    console.error(err);
-                    return res.end('404');
-                }
-                res.end(data);
-            });
-        }
+        let fileName = req.url == '/' ? 'index.html' : `${req.url}.html`;
+        let filePath = `./view${fileName}`;
+
+        console.time('filereadtime');
+        console.time('testtime');
+        fs.readFile(filePath, 'utf8', (err, fileContent) => {
+            if (err) {
+                console.error(err);
+                return res.end('404');
+            }
+            console.timeEnd('filereadtime');
+            res.end(fileContent);
+        });
+
+        console.timeEnd('testtime');
     }
 }
 
