@@ -9,6 +9,11 @@ class PostHandler {
         this.allData = '';
 
         // Ez a függvény fut le, ha megérkezik egy adatcsomag.
+        // 1. csomag: {"name": 
+        // 2. csomag: "Pisti",
+        // 3. csomag:  "passw
+        // 4. csomag: ord": 
+        // 5. csomag: "1234"
         req.on('data', (chunk) => {
             this.allData += chunk;
         });
