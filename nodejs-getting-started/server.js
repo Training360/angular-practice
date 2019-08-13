@@ -23,7 +23,7 @@ class PostHandler {
 
 class GetHandler {
     constructor(req, res) {
-        let fileName = req.url == '/' ? 'index.html' : `${req.url}.html`;
+        let fileName = req.url == '/' ? '/index.html' : `${req.url}.html`;
         let filePath = `./view${fileName}`;
 
         console.time('filereadtime');
