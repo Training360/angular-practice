@@ -36,3 +36,6 @@ termék oldal + rendelés,  NodeJS + Angular
 + szerkesztés
 * Legalább 10 termék és 10 rendelés legyen.  
 * Használjátok a példákat a projektből és az eddigi .*-demo -kból.  
+
+## Anyagok
+[Diagram](https://drive.google.com/file/d/1NHCctIs4iTf3X17poyaRgw9Lhllw9zVx/view?usp=sharing)
