@@ -8,18 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OrderService {
 
-  orders: Order[] = [
-    new Order(),
-    new Order(),
-    new Order()
-  ];
+  apiUrl: string = 'http://localhost:3210/orders';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getAll(): Observable<any> {
-    return this.http.get('http://localhost:3210');
+    return this.http.get(this.apiUrl);
 
 
     /* return new Observable( observer => {
