@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Hello on the Users page.</h1>
+    <div class="row">
+        <div class="col-12">
+            <form id="reg-form">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-group form-check">
+                  <input value="checkmeout" name="check" type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+
+    <script>
+        let inputs = document.querySelectorAll('#reg-form input');
+        let form = document.querySelector('#reg-form');
+
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+            let submitData = {};
+
+            for (let i = 0; i < inputs.length; i++) {
+                let key = inputs[i].name;
+                let value = inputs[i].value;
+                submitData[key] = value;
+            }
+
+            let xhr = new XMLHttpRequest;
+            xhr.open('post', 'http://localhost:3210/users');
+            xhr.onload = (ev) => {
+                console.log(ev.target.response);
+            };
+            xhr.send(JSON.stringify(submitData));
+        });
+    
+        
+    
+    </script>
+
+
+
+
+</body>
+</html>

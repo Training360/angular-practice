@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Eamil</th>
+      <th>Adult</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of userList">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <input type="checkbox" [(ngModel)]="user.isAdult" disabled>
+      </td>
+      <td>
+        <button routerLink="/users/{{ user.id }}" class="btn btn-info">
+          details
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

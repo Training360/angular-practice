@@ -1,7 +1,20 @@
 import { Employee } from './employee';
 import { Bill } from './bill';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
+@Injectable({
+  providedIn: 'root'
+})
 export class MockData {
+
+    employee$: Observable<Employee[]> = new Observable( (observer) => {
+      setInterval( () => {
+        let index = Math.floor(Math.random()*this.employee.length);
+        observer.next([this.employee[index]]);
+      }, 2000);
+    });
+
     employee: Employee[] = [
         {
             "_id": "5d43fd7ed098c465767ce78b",

@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <h1>Films</h1>
+
+  <div class="row">
+    <div class="col-4">
+      <input [(ngModel)]="filterPhrase" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="setSorterKey('id')">#</th>
+            <th (click)="setSorterKey('title')">Title</th>
+            <th (click)="setSorterKey('release')">Release</th>
+            <th (click)="setSorterKey('actor')">Actor</th>
+            <th>commands</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td></td>
+            <td>
+              <input class="form-control" type="text" [(ngModel)]="newFilm.title">
+            </td>
+            <td>
+                <input class="form-control" type="text" [(ngModel)]="newFilm.release">
+            </td>
+            <td>
+                <input class="form-control" type="text" [(ngModel)]="newFilm.actor">
+            </td>
+            <td>
+              <button (click)="onCreate()" class="btn btn-success">add</button>
+            </td>
+          </tr>
+          <tr *ngFor="let film of filmList | filter:filterPhrase:changeCounter | sorter:orderKey:orderDirection:changeCounter">
+            <td>{{ film.id }}</td>
+            <td>
+              <input [(ngModel)]="film.title" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="film.release" type="text" class="form-control">
+            </td>
+            <td>
+              <input [(ngModel)]="film.actor" type="text" class="form-control">
+            </td>
+            <td>
+              <div class="btn-group">
+                <button class="btn btn-info"(click)="onUpdate(film)">update</button>
+                <button class="btn btn-danger" (click)="onDelete(film)">delete</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-10 offset-1">
+      <h1>{{ title }}</h1>
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 offset-1">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Active</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of userList">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name.last }} {{ user.name.first }}</td>
+            <td>{{ user.isActive }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

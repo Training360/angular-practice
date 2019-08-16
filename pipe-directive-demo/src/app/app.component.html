@@ -1,0 +1,58 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h1>Pipe & Directive Demo</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <select [(ngModel)]="filterKey" class="form-control">
+        <option value="name">Name</option>
+        <option value="email">Email</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <input [(ngModel)]="filterPhrase" type="text" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Male</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let student of studentList | filter:filterKey:filterPhrase; index as i">
+            <td>{{ (i+1) }}</td>
+            <td>
+              <input class="form-control"
+                type="text"
+                [(ngModel)]="student.name">
+            </td>
+            <td>{{ student.email }}</td>
+            <td>{{ student.age }}</td>
+            <td>
+              <input type="checkbox"
+                [(ngModel)]="student.gender">
+            </td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<pre>
+  {{ studentList | json }}
+</pre>
