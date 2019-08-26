@@ -19,11 +19,18 @@ module.exports = class DB {
     console.log(this.jsonFilePath);
   }
 
-  find(id = 0) {
+  find(id = 0, query = '') {
     return new Promise( (resolve, reject) => {
       if (id == 0) {
         this.getJsonArray().then(
-          dataArray => resolve(dataArray),
+          dataArray => {
+            if (query) {
+              let queryParams = query.split('=');
+              // filter(item => item.product == 1)
+              dataArray = dataArray.filter(item => item[queryParams[0]] == queryParams[1]);
+            }
+            resolve(dataArray)
+          },
           err => reject(err)
         );
       }else {
@@ -41,7 +48,7 @@ module.exports = class DB {
     return new Promise( (resolve, reject) => {
       fs.readFile(this.jsonFilePath, 'utf8', (err, jsonString) => {
         if (err) {
-          return reject(err);
+          return reject({type: 'File not found.', error: err});
         }
 
         resolve( JSON.parse(jsonString) );
