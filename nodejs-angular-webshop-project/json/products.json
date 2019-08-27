@@ -7,8 +7,9 @@
         "color": "red"
     },
     {
-        "name": "Seprű",
-        "id": 2
+        "id": 2,
+        "name": "Lapát",
+        "price": 2990
     },
     {
         "name": "Palacsintasütő",

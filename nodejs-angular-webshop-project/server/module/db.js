@@ -20,29 +20,54 @@ module.exports = class DB {
     console.log(this.jsonFilePath);
   }
 
-  find(id = 0, query = '') {
-    return new Promise( (resolve, reject) => {
-      if (id == 0) {
-        this.getJsonArray().then(
-          dataArray => {
-            if (query) {
-              let queryParams = query.split('=');
-              // filter(item => item.product == 1)
-              dataArray = dataArray.filter(item => item[queryParams[0]] == queryParams[1]);
-            }
-            resolve(dataArray);
-          },
-          err => reject(err)
-        );
-      }else {
-        this.getJsonArray().then(
-          dataArray => {
-            let found = dataArray.filter( item => item.id == id)[0] || {};
-            resolve(found);
-          }
-        )
+  async find(id = 0, query = '') {
+    let dataArray = await this.getJsonArray();
+    if (id == 0) {
+      return await this.filterByQueryParams(dataArray, query);
+    }
+    return dataArray.filter( item => item.id == id )[0] || {};
+  }
+
+  filterByQueryParams(arr, query) {
+      return new Promise( (resolve, reject) => {
+
+        if (query) {
+          let queryParams = query.split('=');
+          let filtered = arr.filter(item =>
+            item[queryParams[0]] == decodeURI(queryParams[1])
+          );
+          resolve(filtered);
+        }
+
+        resolve(arr);
+      });
+  }
+
+  /**
+   * Update an object in the database file.
+   * @param {number} id id of the object which will be update.
+   * @param {Object} obj object which will be replaces existing object.
+   */
+  async update(id, obj) {
+      // Lekérni az összes adatot a json fájlból (this.getJsonArray)
+      let dataArray = await this.getJsonArray();
+
+      if (obj.id !== id) {
+        throw new Error(`Object id isn't met with url parameter. ${id} !== ${obj.id}`);
       }
-    });
+
+      // Megkeresni melyiknek az id-je azonos a paraméterben kapott id-vel.
+      // Kicsrélni a megtalált objektumot a paraméterben kapottal.
+      for (let i = 0; i < dataArray.length; i++) {
+        if (dataArray[i].id === id) {
+          dataArray[i] = obj;
+          break;
+        }
+      }
+
+      // Visszaírni az adtokat a fájlba (this.write)
+      await this.write(dataArray);
+      return obj;
   }
 
   async create(item) {
