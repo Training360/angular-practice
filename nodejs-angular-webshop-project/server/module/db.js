@@ -1,6 +1,7 @@
 // Betöltjük a path modult az elérési utak kezeléséhez.
 const path = require('path');
 const fs = require('fs');
+const FsUtil = require('./fsUtil');
 
 // A modul egy osztállyal tér vissza, ami az adatbázis fájlokat kezeli.
 module.exports = class DB {
@@ -52,16 +53,9 @@ module.exports = class DB {
     return item;
   }
 
-  getJsonArray() {
-    return new Promise( (resolve, reject) => {
-      fs.readFile(this.jsonFilePath, 'utf8', (err, jsonString) => {
-        if (err) {
-          return reject({type: 'File not found.', error: err});
-        }
-
-        resolve( JSON.parse(jsonString) );
-      });
-    });
+  async getJsonArray() {
+    let data = await FsUtil.readFile(this.jsonFilePath);
+    return JSON.parse(data);
   }
 
   getNextId(dataArray) {
@@ -77,16 +71,9 @@ module.exports = class DB {
     return dataArray[dataArray.length - 1].id + 1;
   }
 
-  write(dataArray) {
-    return new Promise( (resolve, reject) => {
-      let data = JSON.stringify(dataArray, null, 4);
-      fs.writeFile(this.jsonFilePath, data, 'utf8', (err) => {
-        if (err) {
-          reject({type: 'Write errror', error: err});
-        }
-        resolve();
-      });
-    });
+  async write(dataArray) {
+    let data = JSON.stringify(dataArray, null, 4);
+    await FsUtil.writeFile(this.jsonFilePath, data);
   }
 
 };

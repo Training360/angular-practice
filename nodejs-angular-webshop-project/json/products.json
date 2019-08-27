@@ -13,5 +13,9 @@
     {
         "name": "Palacsintasütő",
         "id": 3
+    },
+    {
+        "name": "GofriSütő",
+        "id": 4
     }
 ]
