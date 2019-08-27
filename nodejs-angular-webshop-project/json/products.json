@@ -1,9 +1,17 @@
 [
-  {
-    "id": 1,
-    "name": "Emeletes Ágy",
-    "insdate": "2019-08-16",
-    "description": "Szuper emeletes ágy, akár két mókus méretű gyereknek.",
-    "color": "red"
-  }
+    {
+        "id": 1,
+        "name": "Emeletes Ágy",
+        "insdate": "2019-08-16",
+        "description": "Szuper emeletes ágy, akár két mókus méretű gyereknek.",
+        "color": "red"
+    },
+    {
+        "name": "Seprű",
+        "id": 2
+    },
+    {
+        "name": "Palacsintasütő",
+        "id": 3
+    }
 ]

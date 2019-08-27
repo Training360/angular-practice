@@ -29,7 +29,7 @@ module.exports = class DB {
               // filter(item => item.product == 1)
               dataArray = dataArray.filter(item => item[queryParams[0]] == queryParams[1]);
             }
-            resolve(dataArray)
+            resolve(dataArray);
           },
           err => reject(err)
         );
@@ -44,6 +44,14 @@ module.exports = class DB {
     });
   }
 
+  async create(item) {
+    let dataArray = await this.getJsonArray();
+    item.id = this.getNextId(dataArray);
+    dataArray.push(item);
+    await this.write(dataArray);
+    return item;
+  }
+
   getJsonArray() {
     return new Promise( (resolve, reject) => {
       fs.readFile(this.jsonFilePath, 'utf8', (err, jsonString) => {
@@ -52,6 +60,31 @@ module.exports = class DB {
         }
 
         resolve( JSON.parse(jsonString) );
+      });
+    });
+  }
+
+  getNextId(dataArray) {
+    if (!Array.isArray(dataArray)) {
+      return 1;
+    }
+
+    if (dataArray.length === 0) {
+      return 1;
+    }
+
+    dataArray.sort( (a, b) => a.id - b.id );
+    return dataArray[dataArray.length - 1].id + 1;
+  }
+
+  write(dataArray) {
+    return new Promise( (resolve, reject) => {
+      let data = JSON.stringify(dataArray, null, 4);
+      fs.writeFile(this.jsonFilePath, data, 'utf8', (err) => {
+        if (err) {
+          reject({type: 'Write errror', error: err});
+        }
+        resolve();
       });
     });
   }
