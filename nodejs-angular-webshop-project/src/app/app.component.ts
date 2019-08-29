@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { OrderService } from './service/order.service';
 
 @Component({
   selector: 'app-root',
@@ -18,4 +19,12 @@ export class AppComponent {
 
 
   title = 'nodejs-angular-webshop-project';
+
+  constructor(
+    private orderService: OrderService
+  ) {
+    this.orderService.getAll().subscribe(
+      data => console.log(data)
+    )
+  }
 }
