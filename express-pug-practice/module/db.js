@@ -56,4 +56,17 @@ module.exports = class DB {
         return result;
 
     }
+
+    async create(data) {
+        let sql = 
+        `
+        INSERT INTO products 
+        (name, manufacturer, price, stock, active) 
+        VALUES
+        ('${data.name}', ${data.manufacturer}, ${data.price}, ${data.stock}, 1)
+        `;
+
+        let result = await this.conn.query(sql);
+        return result;
+    }
 };

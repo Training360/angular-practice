@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h2 Create a new product
+  form.form(action="/products", method="post")
+    .form-group
+      label Name
+      input.form-control(name="name")
+    .form-group
+      label Manufacturer
+      input.form-control(name="manufacturer")
+    .form-group
+      label Price
+      input.form-control(name="price")
+    .form-group
+      label Stock
+      input.form-control(name="stock")
+    button.btn.btn-primary(type="submit") Save
+
