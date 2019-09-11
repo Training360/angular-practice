@@ -16,14 +16,26 @@ router.get('/new', async (req, res, next) => {
   res.render('new-product');
 });
 
+router.get('/update/:id', async (req, res, next) => {
+  let selectedProductForSilvy = await db.read(req.params.id);
+  console.log(selectedProductForSilvy);
+  res.render('update-product', {product: selectedProductForSilvy[0]});
+});
+
 // Create new product.
 router.post('/', async (req, res, next) => {
   let result = await db.create(req.body);
   res.json(result);
 });
 
+router.post('/update', async (req, res, next) => {
+  let result = await db.update(req.body);
+  res.json(result);
+});
+
 router.get('/delete/:id', async (req, res, next) => {
-  
+  let result = await db.delete(req.params.id);
+  res.json(result);
 });
 
 module.exports = router;

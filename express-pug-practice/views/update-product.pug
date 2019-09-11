@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h2 Create a new product
+  form.form(action="/products/update", method="post")
+    input(type="hidden", name="id", value=product.id)
+    .form-group
+      label Name
+      input.form-control(name="name", value=product.name)
+    .form-group
+      label Manufacturer
+      input.form-control(name="manufacturer", value=product.manufacturer)
+    .form-group
+      label Price
+      input.form-control(name="price", value=product.price)
+    .form-group
+      label Stock
+      input.form-control(name="stock", value=product.stock)
+    .form-group
+      label Active
+      select.form-control(name="active", value=product.active)
+        option(value='1') active
+        option(value='0') inactive
+    button.btn.btn-primary(type="submit") Save
+

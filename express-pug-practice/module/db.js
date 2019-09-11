@@ -37,7 +37,7 @@ module.exports = class DB {
         `
     }
 
-    async read() {
+    async read(id) {
         let sql = `
         SELECT 
             p.id, 
@@ -51,6 +51,10 @@ module.exports = class DB {
         FROM 
             products p JOIN manufacturers m ON p.manufacturer = m.id 
         `;
+
+        if (id) {
+            sql += ` WHERE p.id = ${id}`;
+        }
 
         let result = await this.conn.query(sql);
         return result;
@@ -66,6 +70,30 @@ module.exports = class DB {
         ('${data.name}', ${data.manufacturer}, ${data.price}, ${data.stock}, 1)
         `;
 
+        let result = await this.conn.query(sql);
+        return result;
+    }
+
+    async delete(id) {
+        let sql = `
+            DELETE FROM products WHERE id = ${id}
+        `;
+        let result = await this.conn.query(sql);
+        return result;
+    }
+
+    async update(product) {
+        let sql = 
+        `
+        UPDATE products 
+        SET 
+            name = '${product.name}', 
+            manufacturer = ${product.manufacturer}, 
+            price = ${product.price}, 
+            stock = ${product.stock},
+            active = ${product.active}
+        WHERE id = ${product.id}
+        `;
         let result = await this.conn.query(sql);
         return result;
     }

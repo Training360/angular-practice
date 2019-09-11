@@ -14,4 +14,9 @@ block content
             .p Manufacturer: #{product.manufacturer}
             .p Price: #{product.price}
           .card-footer
-            a.btn.btn-block.btn-info Show
+            - let url = `/products/delete/${product.id}`;
+            - let updateUrl = `/products/update/${product.id}`;
+            .btn-group
+              a.btn.btn-info Show
+              a.btn.btn-warning(href=updateUrl) Update
+              a.btn.btn-danger(href=url) Del
