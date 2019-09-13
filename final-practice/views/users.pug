@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .row
+    .col-10
+      table.table.table-striped
+        thead
+          tr
+            th id
+            th name
+            th department
+            th email
+        tbody
+          each user in users
+            tr 
+              td #{user.id}
+              td #{user.name}
+              td #{user.department}
+              td #{user.email}
+              
+
+
