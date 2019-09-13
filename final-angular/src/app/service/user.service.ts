@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,8 @@ export class UserService {
   read():Observable<any>{
     return this.http.get(this.url);
 
+  }
+  delete(id:number):Observable<User>{
+    return this.http.delete<User>(`${this.url}/${id}`);
   }
 }

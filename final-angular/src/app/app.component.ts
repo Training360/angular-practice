@@ -15,4 +15,11 @@ export class AppComponent {
     us.access();
   }
   title = 'final-angular';
+
+  onDelete(id:number):void{
+    this.us.delete(id).forEach(data=>console.log(data));
+  }
+
+  searchText = '';
+
 }
