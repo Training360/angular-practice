@@ -18,6 +18,26 @@ module.exports = class DB {
         return result;
     }
 
+    async setUserToken(id, token) {
+        let sql = `
+            UPDATE users SET token = '${token}' WHERE id = ${id}
+        `;
+        let result = await this.conn.query(sql);
+        return true;
+    }
+
+    async checkLogin(req) {
+        if (!req.cookies.uuid) {
+            return false;
+        }
+
+        let sql = `
+            SELECT * FROM users WHERE token = '${req.cookies.uuid}'
+        `;
+        let result = await this.conn.query(sql);
+        return result[0];
+    }
+
     async read(id) {
         let sql = `
         SELECT 
