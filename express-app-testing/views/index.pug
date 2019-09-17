@@ -70,16 +70,16 @@ html(lang="en")
                 button.btn.btn-secondary(type="submit") Redeem
         .col-md-8.order-md-1
           h4.mb-3 Billing address
-          form.needs-validation(novalidate="")
+          form#billing-address-form.needs-validation(novalidate="")
             .row
               .col-md-6.mb-3
                 label(for="firstName") First name
-                input#firstName.form-control(type="text" placeholder="" value="" required="")
+                input#firstName.form-control(type="text" placeholder="" value="" required="" pattern="^[a-zA-Z]{3,20}$")
                 .invalid-feedback
                   | Valid first name is required.
               .col-md-6.mb-3
                 label(for="lastName") Last name
-                input#lastName.form-control(type="text" placeholder="" value="" required="")
+                input#lastName.form-control(type="text" placeholder="" value="" required="" pattern="^[a-zA-Z]{3,20}$")
                 .invalid-feedback
                   | Valid last name is required.
             .mb-3
