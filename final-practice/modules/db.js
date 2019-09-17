@@ -21,5 +21,12 @@ module.exports = class DB {
     }
     create() {}
     update() {}
-    delete() {}
+    async delete(id) {
+        const sql = `
+        DELETE FROM employees
+        WHERE id =${id};
+        `;
+        let result = await this.conn.query(sql);
+        return result;
+    }
 }

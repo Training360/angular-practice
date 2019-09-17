@@ -12,5 +12,10 @@ router.get('/users', async (req, res, next) => {
     let result = await db.read();
     res.json(result);
 });
+router.delete('/users/:id', async (req, res, next) => {
+    let result = await db.delete(req.params.id);
+    res.json(result);
+});
+
 
 module.exports = router;

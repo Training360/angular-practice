@@ -17,7 +17,7 @@ app.set('view engine', 'pug');
 app.use((req,res,next)=>{
   res.setHeader('Access-Control-Allow-Origin','*');
   res.setHeader('Access-Control-Allow-Headers','*');
-  res.setHeader('Access-Control-Allow-Methods','get,put,post,delete,options');
+  res.setHeader('Access-Control-Allow-Methods','GET,PUT,POST,DELETE,OPTIONS');
   next();
 })
 
