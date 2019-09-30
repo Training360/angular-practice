@@ -1,0 +1,30 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>name</th>
+      <th>email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>#</td>
+      <td><input [(ngModel)]="newUser.name" type="text"></td>
+      <td><input [(ngModel)]="newUser.email" type="text"></td>
+      <td>
+        <button (click)="onCreate(newUser)">Create</button>
+      </td>
+    </tr>
+
+
+    <tr *ngFor="let user of list$ | async">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button (click)="onDelete(user)">del</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
